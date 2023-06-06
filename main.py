@@ -22,7 +22,7 @@ import DataProcess as DP
 WIDTH = 128
 HEIGHT = 64
 # Set the update time (hour)
-Update_time = (13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 0, 1, 2, 3, 4, 5)
+Update_time = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 0)
 # Set the position you what to update
 BK_B1 = (10.771903, 106.658514) #HCMUT B1
 HOME = (10.874118, 106.745708) #cafe khiet tam
@@ -276,6 +276,10 @@ def TakeNewFirmware():
     utime.sleep(2)
     disconnectFTP()
     ListDirFile('0')
+    display.fill(0)
+    display.text('Downloaded',0,50)
+    display.show()
+    display_status()
     print('New firmware is downloaded.')
     
     #Take file from 7600E and get all the string received
@@ -411,6 +415,12 @@ def display_status():
     display.text(RTC_time,0,0)
     # Position and distance
     response = GetGPSinfo()
+    while len(response) < 19:
+        print('Waiting 7600E')
+        utime.sleep(3)
+        response = GetGPSinfo()
+    utime.sleep(2)
+    response = GetGPSinfo()    
     response_list = response.split("\r\n")
     if len(response_list[1]) == 19:
         display.text('lat: not ready',0,10)
@@ -437,6 +447,8 @@ def display_status():
     
 #=================================[ Main ]=====================================#
 while True:
+    utime.sleep(2)
+    resetPin.value(1)
     display.fill(0)
     display_status()
     display.text('Checking Version',0,50)
@@ -470,7 +482,7 @@ while True:
         display.text('RunningNewestVer',0,50)
         display.show()
         display_status()
-        utime.sleep(180)
+        utime.sleep(30)
 
 # while True:
 #     
