@@ -26,7 +26,7 @@ Update_time = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 # Set the position you what to update
 BK_B1 = (10.771903, 106.658514) #HCMUT B1
 HOME = (10.874118, 106.745708) #cafe khiet tam
-UpdateLocation = HOME
+UpdateLocation = BK_B1
 
 uart0 = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1)) # for module SIM7600E
 uart1 = UART(1, baudrate=115200, tx=Pin(4), rx=Pin(5)) # for ATmega328P
