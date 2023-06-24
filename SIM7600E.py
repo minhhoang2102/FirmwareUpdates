@@ -211,6 +211,7 @@ def GetRxHexStr(filepath):
 # filename = 'Blink2sec.ino.hex'
 
 #----------------------------main----------------------------#
+# DeleteFile('version.txt')
 # StartFTP()
 # LoginFTPServer('ftp.drivehq.com', '21', 'mh1911200', '98027435610', '0')
 # utime.sleep(3)
